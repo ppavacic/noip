@@ -1,0 +1,17 @@
+#!/bin/sh
+
+USERNAME="$NOIP_USERNAME"
+PASSWORD="$NOIP_PASSWORD"
+HOSTNAMES="$NOIP_HOSTNAMES"
+
+if [ -n "$NOIP_USERNAME_FILE" ]; then
+        USERNAME="$(cat $NOIP_USERNAME_FILE)"
+fi
+if [ -n "$NOIP_PORTS_FILE" ]; then
+        PASSWORD="$(cat $NOIP_PORTS_FILE)"
+fi
+if [ -n "$NOIP_HOSTNAMES_FILE" ]; then
+        HOSTNAMES="$(cat $NOIP_HOSTNAMES_FILE)"
+fi
+
+noip-duc -g $HOSTNAMES --username $USERNAME --password $PASSWORD
