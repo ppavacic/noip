@@ -1,10 +1,7 @@
 # noip
 
-> [!CAUTION]
-> Noip2 has open security issue!
-> Before using this image check https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=601229 and https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=653957.
-
 Fixes your problem of having ever-changing IP address.
+Uses noip-duc.
 
 ## Usage
 
@@ -55,10 +52,12 @@ sudo docker run \
   --name noip \
   -d \
   -e NOIP_USERNAME_FILE=/run/secrets/noip_username \
-  -e NOIP_PASSWORD_FILE=run/secrets/noip_password \
-  -e NOIP_HOSTNAMES_FILE=run/secrets/noip_hostnames \
+  -e NOIP_PASSWORD_FILE=/run/secrets/noip_password \
+  -e NOIP_HOSTNAMES_FILE=/run/secrets/noip_hostnames \
   ppavacic/noip
 ```
+
+Where `/run/secrets/` is a volume with secrets.
 
 ## Contribute
 
